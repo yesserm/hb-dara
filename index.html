@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive Birthday Celebration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "secondary": "#14b8a6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) translateX(40px) rotate(20deg); opacity: 0; }
+        }
+        @keyframes fallDown {
+            0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(110vh) translateX(-20px); opacity: 0; }
+        }
+        @keyframes pop {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes burst {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 12s linear infinite;
+        }
+        .code-snippet {
+            position: absolute;
+            top: -50px;
+            font-family: monospace;
+            white-space: nowrap;
+            animation: fallDown 8s linear infinite;
+        }
+        .interactive-card:active {
+            animation: pop 0.2s ease-out forwards;
+        }
+        .feedback-overlay {
+            display: none;
+        }
+        .interactive-card:active .feedback-overlay {
+            display: flex;
+            animation: burst 0.4s ease-out forwards;
+        }#surprise-trigger:checked ~ .massive-burst {
+            display: block;
+        }
+        .massive-burst {
+            display: none;
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display overflow-hidden h-screen w-full relative">
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+<div class="balloon left-[5%] text-primary/30" style="animation-delay: 0s; animation-duration: 15s;">
+<span class="material-symbols-outlined !text-6xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[25%] text-secondary/30" style="animation-delay: 3s; animation-duration: 18s;">
+<span class="material-symbols-outlined !text-7xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[50%] text-slate-400/30" style="animation-delay: 6s; animation-duration: 14s;">
+<span class="material-symbols-outlined !text-5xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[75%] text-primary/30" style="animation-delay: 1s; animation-duration: 20s;">
+<span class="material-symbols-outlined !text-8xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[90%] text-secondary/30" style="animation-delay: 8s; animation-duration: 16s;">
+<span class="material-symbols-outlined !text-6xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+</div>
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-10">
+<div class="code-snippet left-[10%] text-primary/30 text-xs" style="animation-delay: 0s;">print("Happy Birthday!")</div>
+<div class="code-snippet left-[30%] text-slate-500/30 text-sm" style="animation-delay: 2s;">import joy</div>
+<div class="code-snippet left-[60%] text-secondary/30 text-xs" style="animation-delay: 4s;">while True: celebrate()</div>
+<div class="code-snippet left-[80%] text-primary/30 text-sm" style="animation-delay: 1s;">def party():</div>
+<div class="code-snippet left-[45%] text-slate-500/30 text-xs" style="animation-delay: 5s;">cristian.age += 1</div>
+</div>
+<input class="hidden" id="surprise-trigger" type="checkbox"/>
+<div class="massive-burst">
+<div class="balloon left-[10%] text-primary" style="animation: floatUp 2s ease-out infinite; animation-delay: 0.1s;">
+<span class="material-symbols-outlined !text-9xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[30%] text-secondary" style="animation: floatUp 2.5s ease-out infinite; animation-delay: 0.3s;">
+<span class="material-symbols-outlined !text-8xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[50%] text-blue-400" style="animation: floatUp 1.8s ease-out infinite; animation-delay: 0.2s;">
+<span class="material-symbols-outlined !text-7xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[70%] text-teal-300" style="animation: floatUp 2.2s ease-out infinite; animation-delay: 0.5s;">
+<span class="material-symbols-outlined !text-9xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="balloon left-[90%] text-primary" style="animation: floatUp 2s ease-out infinite; animation-delay: 0.4s;">
+<span class="material-symbols-outlined !text-8xl" style="font-variation-settings: 'FILL' 1">egg</span>
+</div>
+<div class="code-snippet left-[20%] text-primary font-bold text-2xl" style="animation: fallDown 1.5s ease-in infinite;">CRISTIAN.PARTY()</div>
+<div class="code-snippet left-[50%] text-secondary font-bold text-xl" style="animation: fallDown 1.2s ease-in infinite;">print("SUCCESS")</div>
+<div class="code-snippet left-[80%] text-primary font-bold text-2xl" style="animation: fallDown 1.8s ease-in infinite;">while True: joy()</div>
+</div>
+<div class="relative z-20 flex flex-col h-full w-full">
+<div class="flex items-center bg-transparent p-4 pb-2 justify-between">
+<div class="text-primary flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined !text-2xl">terminal</span>
+</div>
+<h2 class="text-slate-800 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Cristian's Console</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center items-center px-6">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[40px] font-extrabold leading-tight text-center pb-3 pt-6">
+            Happy Birthday <br/>
+<span class="text-primary">Cristian!</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-normal pb-8 pt-1 px-4 text-center max-w-sm">
+<span class="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded font-mono text-sm">if age == today:</span><br/>
+<span class="text-primary font-mono font-bold">celebrate()</span>
+</p>
+<div class="grid grid-cols-2 gap-3 w-full max-w-md">
+<div class="interactive-card relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-white dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:scale-[1.02]" style='background-image: linear-gradient(0deg, rgba(43, 108, 238, 0.7) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtqnZ73bkz22p2ERuC2RNNhF-eRO_SuTpnbaSr4wptuTqEep1odeJDQVl7-N-Qqextc4rGQkoQHm4n9LfhL_Nf9tLiTKvBbBPRixQTCT280rLgTV1pw83up204AYd1_HBpM5eKBZaDjjbKDP6IeihdH0rSFg3EKPIBsJBbmiQL87G-yAZmpFUs1-WOeU1tNUzPGiyvv7Nto8SS6rcz9TYiXC05beCgpRqxNoHeYhrwkTjkcxUtTa_LAEJV_J_e5M09FgGNY8Q7wt8");'>
+<p class="text-white text-sm font-bold leading-tight font-mono">print('HBD')</p>
+<div class="feedback-overlay absolute inset-0 bg-primary/40 items-center justify-center pointer-events-none rounded-lg">
+<span class="text-white font-mono font-bold text-xs bg-black/50 p-2 rounded">Output: "Happy Birthday!"</span>
+</div>
+</div>
+<div class="interactive-card relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-white dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:scale-[1.02]" style='background-image: linear-gradient(0deg, rgba(20, 184, 166, 0.7) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBKC1xMllV-Xs3YRdTr94xErxIx4fB0XUsRpeXmxO2gUqpCEYwqJirCATBI9nYPPbFzFDwn5awlOj8u-JOkJ3JNY6EQdO5wkPeQaXz5MfFAefFaXz8YdwzOpI7wS5YVZKnMg-xVGSlsDAZXximPHULbzwTFT6glBe_CkR80C0ld9_xVQCojyvHSz7LJQ_iJdhKmLHd3fGLuWxZV3NVLIg8eFvAc9MEqs0WrJjLn1-fSQTVGR4rwYV1bd8Gw52j_LP9KpYJ_wawctM");'>
+<p class="text-white text-sm font-bold leading-tight font-mono">def party():</p>
+<div class="feedback-overlay absolute inset-0 bg-secondary/40 items-center justify-center pointer-events-none rounded-lg">
+<span class="text-white font-mono font-bold text-xs bg-black/50 p-2 rounded">Function Loaded...</span>
+</div>
+</div>
+<div class="interactive-card relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-white dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:scale-[1.02]" style='background-image: linear-gradient(0deg, rgba(43, 108, 238, 0.7) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy7KyO5OvdGpFV8Yf2lNV_BBKUSWa3rYB5f2aUNrznitZM_eBUXZ8PbFR54vqDaPZe5rXCbhl2wlRuIZJ2c6UUEuzwu8c8EqTx3rvVPmPvvsgagxanqtgROKY7RkYW1jH3fvnAry5-xMzNPJ0xFHP-nBgiBbq4PNXUFL6fPvNq5AhwOXI3nWCf_HsXrQ8LL-uo2kUv0ZbdDG-OYwW-A5FHXIWCLjWZXxaN1xAQ9FIN8bww1VaaqOl2aNHVQ7dd9L26bbj1UXOaOLo");'>
+<p class="text-white text-sm font-bold leading-tight font-mono">while True:</p>
+<div class="feedback-overlay absolute inset-0 bg-blue-500/40 items-center justify-center pointer-events-none rounded-lg">
+<span class="text-white font-mono font-bold text-xs bg-black/50 p-2 rounded">Infinite Joy Loop...</span>
+</div>
+</div>
+<div class="interactive-card relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-white dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:scale-[1.02]" style='background-image: linear-gradient(0deg, rgba(20, 184, 166, 0.7) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKc1OQZl6qSbGpsBc92R0hogbzSgyeSZb3UZJwTLHOQ39CTk8lNvfaoRy1XeFHDtLpOC5S159Os_y3BZzg7ybs5NZh5gpxforHjCTRVgEi39IkRToIEheTDY_byDpGiy0YIeftcqXFkRLJfZWOMSXGCWdl8Qi0OVg5gfEKkfYLQhyEbdmwEiXJDi54a17pCQM9ggpWM8zyf2bMUgfHA1dSRDDeQlh1C75gQ_gwxfC5HFEQflWKinmmD2hvyOlpajFUGTfmn9h2_WI");'>
+<p class="text-white text-sm font-bold leading-tight font-mono">import joy</p>
+<div class="feedback-overlay absolute inset-0 bg-teal-500/40 items-center justify-center pointer-events-none rounded-lg">
+<span class="text-white font-mono font-bold text-xs bg-black/50 p-2 rounded">joy.success = True</span>
+</div>
+</div>
+</div>
+<div class="flex px-4 py-10 justify-center w-full">
+<label class="flex w-full max-w-[320px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-lg font-bold shadow-lg shadow-primary/30 active:scale-95 transition-all" for="surprise-trigger">
+<span class="truncate">Tap for a surprise!</span>
+</label>
+</div>
+</div>
+<div class="pb-8 text-center">
+<p class="text-slate-400 dark:text-slate-600 text-[10px] font-mono tracking-[0.2em] uppercase">
+            &lt; interactive.py | build: 1.0.24 &gt;
+        </p>
+</div>
+</div>
+
+</body></html>
